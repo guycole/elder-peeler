@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elder-peeler
+  labels:
+    app: elder-peeler
+spec:
+  replicas: 1            
+  selector:
+    matchLabels:
+      app: elder-peeler
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: '/metrics'
+        prometheus.io/port: '80'
+      labels:
+        app: elder-peeler
+    spec:
+      tolerations:
+      - effect: NoSchedule
+        key: taintKey
+        operator: Equal
+        value: spot
+      containers:
+      - name: elder-peeler
+        image: 123456789012.dkr.ecr.us-west-2.amazonaws.com/elder-peeler:latest
+        imagePullPolicy: Always
+      serviceAccount: elder-peeler
+      serviceAccountName: elder-peeler
