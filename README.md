@@ -8,10 +8,11 @@ This repository:
 
 ## The Project
 1.  Assumes same AWS account, region, etc.
+1.  Create a IAM role
+    1.   (role) irsa-elder-peeler
 1.  Create a namespace for your test
     1.  ```kubectl create sa elder-peeler -n guytest```
-1.  Create a IAM role
-    1.   (role) irsa-elder-peeler-us-west-2
+    1.  Be sure to update the annotation to reflect the IAM role.
 1.  Create a [AWS SQS queue](https://aws.amazon.com/sqs/)
 1.  Deploy the SQS consumer to your cluster.
     1.  "elder-peeler" is the name of the SQS consumer.

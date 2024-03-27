@@ -1,0 +1,32 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "irsa-elder-peeler",
+        "RoleId": "AROAYKCJVRTOFJZSWCGTR",
+        "Arn": "arn:aws:iam::123456789012:role/irsa-elder-peeler",
+        "CreateDate": "2024-03-15T02:47:11+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Federated": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/F5CFD1XXX2FB0F9D0DFBBC6AB542580D"
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity",
+                    "Condition": {
+                        "StringEquals": {
+                            "oidc.eks.us-west-2.amazonaws.com/id/F5CFD1XXX2FB0F9D0DFBBC6AB542580D:aud": "sts.amazonaws.com"
+                        }
+                    }
+                }
+            ]
+        },
+        "Description": "EKA demo",
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {
+            "LastUsedDate": "2024-03-27T17:29:58+00:00",
+            "Region": "us-west-2"
+        }
+    }
+}
