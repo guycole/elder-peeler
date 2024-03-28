@@ -1,0 +1,126 @@
+Name:         guyscaler
+Namespace:    guytest
+Labels:       scaledobject.keda.sh/name=guyscaler
+Annotations:  <none>
+API Version:  keda.sh/v1alpha1
+Kind:         ScaledObject
+Metadata:
+  Creation Timestamp:  2024-03-27T23:32:01Z
+  Finalizers:
+    finalizer.keda.sh
+  Generation:  1
+  Managed Fields:
+    API Version:  keda.sh/v1alpha1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:finalizers:
+          .:
+          v:"finalizer.keda.sh":
+        f:labels:
+          .:
+          f:scaledobject.keda.sh/name:
+    Manager:      keda
+    Operation:    Update
+    Time:         2024-03-27T23:32:01Z
+    API Version:  keda.sh/v1alpha1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:maxReplicaCount:
+        f:minReplicaCount:
+        f:pollingInterval:
+        f:scaleTargetRef:
+          .:
+          f:name:
+        f:triggers:
+    Manager:      kubectl-client-side-apply
+    Operation:    Update
+    Time:         2024-03-27T23:32:01Z
+    API Version:  keda.sh/v1alpha1
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:status:
+        .:
+        f:conditions:
+        f:externalMetricNames:
+        f:health:
+          .:
+          f:s0-aws-sqs-guytest:
+            .:
+            f:numberOfFailures:
+            f:status:
+        f:hpaName:
+        f:lastActiveTime:
+        f:originalReplicaCount:
+        f:scaleTargetGVKR:
+          .:
+          f:group:
+          f:kind:
+          f:resource:
+          f:version:
+        f:scaleTargetKind:
+    Manager:         keda
+    Operation:       Update
+    Subresource:     status
+    Time:            2024-03-27T23:42:01Z
+  Resource Version:  180658522
+  UID:               dfcf9d4f-2042-4812-8718-1d42f47e335b
+Spec:
+  Max Replica Count:  10
+  Min Replica Count:  0
+  Polling Interval:   30
+  Scale Target Ref:
+    Name:  elder-peeler
+  Triggers:
+    Metadata:
+      Aws Region:      us-west-2
+      Identity Owner:  operator
+      Queue Length:    2
+      Queue URL:       https://sqs.us-west-2.amazonaws.com/571385154780/guytest
+    Type:              aws-sqs-queue
+Status:
+  Conditions:
+    Message:  ScaledObject is defined correctly and is ready for scaling
+    Reason:   ScaledObjectReady
+    Status:   True
+    Type:     Ready
+    Message:  Scaling is not performed because triggers are not active
+    Reason:   ScalerNotActive
+    Status:   False
+    Type:     Active
+    Message:  No fallbacks are active on this scaled object
+    Reason:   NoFallbackFound
+    Status:   False
+    Type:     Fallback
+    Status:   Unknown
+    Type:     Paused
+  External Metric Names:
+    s0-aws-sqs-guytest
+  Health:
+    s0-aws-sqs-guytest:
+      Number Of Failures:  0
+      Status:              Happy
+  Hpa Name:                keda-hpa-guyscaler
+  Last Active Time:        2024-03-27T23:37:01Z
+  Original Replica Count:  1
+  Scale Target GVKR:
+    Group:            apps
+    Kind:             Deployment
+    Resource:         deployments
+    Version:          v1
+  Scale Target Kind:  apps/v1.Deployment
+Events:
+  Type    Reason                      Age   From           Message
+  ----    ------                      ----  ----           -------
+  Normal  KEDAScalersStarted          41m   keda-operator  Scaler aws-sqs-queue is built.
+  Normal  KEDAScalersStarted          41m   keda-operator  Started scalers watch
+  Normal  ScaledObjectReady           41m   keda-operator  ScaledObject is ready for scaling
+  Normal  KEDAScaleTargetDeactivated  41m   keda-operator  Deactivated apps/v1.Deployment guytest/elder-peeler from 1 to 0
+  Normal  KEDAScaleTargetActivated    37m   keda-operator  Scaled apps/v1.Deployment guytest/elder-peeler from 0 to 1
+  Normal  KEDAScaleTargetDeactivated  31m   keda-operator  Deactivated apps/v1.Deployment guytest/elder-peeler from 5 to 0
