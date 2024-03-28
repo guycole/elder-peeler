@@ -38,6 +38,7 @@ This repository:
     1.  Be sure to add SQS permissions
 1.  Install KEDA via helm
     1.  ```helm install keda kedacore/keda --namespace keda --create-namespace --version 2.13.2 -f values.yaml```
+    1.  Note that values.yaml contains the ARN of keda role.
     1.  It takes a minute for gRPC to get connected
 1.  Apply ScaledObject 
     1. ```kubectl apply -f scaled.yaml```
