@@ -82,7 +82,7 @@ Spec:
       Aws Region:      us-west-2
       Identity Owner:  operator
       Queue Length:    2
-      Queue URL:       https://sqs.us-west-2.amazonaws.com/571385154780/guytest
+      Queue URL:       https://sqs.us-west-2.amazonaws.com/123456789012/guytest
     Type:              aws-sqs-queue
 Status:
   Conditions:
