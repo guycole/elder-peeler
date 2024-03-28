@@ -42,6 +42,9 @@ This repository:
     1.  It takes a minute for gRPC to get connected
 1.  Apply ScaledObject 
     1. ```kubectl apply -f scaled.yaml```
+1.  Verify ScaledObject
+    1.  ```kubectl describe scaledobject guyscaler -n guytest```
+    1.  [my results](https://github.com/guycole/elder-peeler/blob/main/describe.out)
 1.  Test KEDA
     1. Write messages to your SQS queue.
     1. Before KEDA, there would have been only a single replica for all traffic but now the scaler should create many pods handle the increase in SQS traffic.
