@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: guyscaler
+  namespace: guytest
+spec:
+  minReplicaCount: 0  # scale down to 0
+  maxReplicaCount: 10 
+  pollingInterval: 30 
+  scaleTargetRef:
+    name: elder-peeler
+  triggers:
+  - type: aws-sqs-queue
+    metadata:
+      queueURL: https://sqs.us-west-2.amazonaws.com/123456789012/guytest
+      queueLength: "2" # 2 messages per pod 
+      awsRegion: us-west-2
+      identityOwner: operator # defaults to pod if unset

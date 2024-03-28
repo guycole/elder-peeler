@@ -1,0 +1,31 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "keda",
+        "RoleId": "AROAYKCJVRTOMSYMRGKFN",
+        "Arn": "arn:aws:iam::123456789012:role/keda",
+        "CreateDate": "2024-03-25T18:41:13+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Federated": "arn:aws:iam::123456789812:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/F5CFD1XXX2FB0F9D0DFBBC6AB542580D"
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity",
+                    "Condition": {
+                        "StringEquals": {
+                            "oidc.eks.us-west-2.amazonaws.com/id/F5CFD1XXX2FB0F9D0DFBBC6AB542580D:sub": "system:serviceaccount:keda:keda-operator"
+                        }
+                    }
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {
+            "LastUsedDate": "2024-03-27T20:55:59+00:00",
+            "Region": "us-west-2"
+        }
+    }
+}

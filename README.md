@@ -32,7 +32,18 @@ This repository:
 1.  Optional prometheus step
     1.  Apply pod-monitor.yaml and elder-peeler and prometheus will scrape elder-peeler
         1. exposes peeler_messages_available and peeler_messages_consumed
-1.  Apply KEDA
-    1. xxx
+## Apply KEDA
+1.  Create a IAM role
+    1.  [example](https://github.com/guycole/elder-peeler/blob/main/keda_role.json)
+    1.  Be sure to add SQS permissions
+1.  Install KEDA via helm
+    1.  ```helm install keda kedacore/keda --namespace keda --create-namespace --version 2.13.2 -f values.yaml```
+    1.  It takes a minute for gRPC to get connected
+1.  Apply ScaledObject 
+    1. ```kubectl apply -f scaled.yaml```
 1.  Test KEDA
-    1. xxx
+    1. Write messages to your SQS queue.
+    1. Before KEDA, there would have been only a single replica for all traffic but now the scaler should create many pods handle the increase in SQS traffic.
+    1. After the SQS queue is emptied, the pods will all be removed by KEDA 
+1.  Cleanup
+    1. Be sure to read cleanup instructions on KEDA website, it isn't enough to invoke ```helm delete```
